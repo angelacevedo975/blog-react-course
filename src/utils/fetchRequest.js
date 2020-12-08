@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export const BASE_API_URL = 'http://localhost:5000/api'
+export const BASE_API_URL = 'https://blog-react-course-back.herokuapp.com/api'
 export const BASE_UPLOAD_IMAGES =
   'https://api.cloudinary.com/v1_1/dboa1gxzj/image/upload'
 const UPLOAD_PRESET = 'k6e23lk3'
