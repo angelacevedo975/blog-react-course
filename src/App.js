@@ -20,8 +20,10 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(localStorage.getItem("dark"));
     if (localStorage.getItem("dark")) {
-      setDark(localStorage.getItem("dark"))
+      const val=localStorage.getItem("dark")
+      setDark(val==="false" ? false : true)
     } else {
       setDark(false)
       localStorage.setItem("dark", false)
