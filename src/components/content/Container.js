@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PostItem from './PostItem'
 import { getPosts } from '../../utils/postsHelper'
-import {BottomScrollListener} from "react-bottom-scroll-listener"
+import { BottomScrollListener } from "react-bottom-scroll-listener"
+import DisplayMode from "../../context/DisplayMode"
 import './container.css'
 
 const Container = () => {
@@ -11,6 +12,8 @@ const Container = () => {
   const [nextPage, setNextPage] = useState(0)
   const [showScroll, setShowScroll] = useState('none')
 
+  const mode= useContext(DisplayMode)
+  
   useEffect(() => {
     async function getPagePosts() {
       const { success, response, error } = await getPosts(page)
@@ -47,6 +50,7 @@ const Container = () => {
   }
 
   return (
+    <div className={`container-fluid ${mode.dark && "bg-dark"}`}>
     <div className="container my-5">
       <div className="row my-5">
         {posts.map((post, index) => (
@@ -73,6 +77,7 @@ const Container = () => {
           <i className="fa fa-chevron-up"></i>
         </button>
       </div>
+    </div>
     </div>
   )
 }

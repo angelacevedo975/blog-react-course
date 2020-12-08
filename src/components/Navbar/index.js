@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import DisplayMode from "../../context/DisplayMode"
 
 const Navbar = () => {
+
+  const mode = useContext( DisplayMode )
+
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav className={`navbar navbar-expand-lg fixed-top ${mode.dark ? "navbar-dark bg-dark" : "navbar-light bg-light"}`}>
       <a className="navbar-brand ml-5" href="/">
         <img
           src="/logo192.png"
@@ -42,23 +47,12 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-        <a className="btn btn-primary text-white mr-3" href="/post/create">
+        <a className={`btn mr-3 ${mode.dark ? "btn-secondary " : "btn-primary text-white"}`} href="/post/create">
           Create Post
         </a>
-        <form className="form-inline my-2 my-lg-0 mr-5">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="Looking post?"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-primary my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
+        <a className={mode.dark ? "text-white" : "text-warning"} onClick={ ()=> mode.updateMode() }>
+          <i className="fas fa-moon fa-2x"></i>
+        </a>
       </div>
     </nav>
   )
