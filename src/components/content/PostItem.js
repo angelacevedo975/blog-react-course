@@ -1,7 +1,7 @@
 import React from 'react'
 
-const PostItem = () => {
-  const { title, content, postId } = this.props
+const PostItem = ( { title, content, postId } ) => {
+  
   return (
     <div className="card" style={{ width: '20rem' }}>
       <img className="card-img-top" src="/logo192.png" alt="Card image cap" />
